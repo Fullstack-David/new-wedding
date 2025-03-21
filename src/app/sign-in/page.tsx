@@ -16,6 +16,7 @@ const SignIn = () => {
     try {
       const res = await signInWithEmailAndPassword(email, password);
       console.log({ res });
+      //   sessionStorage.setItem("user", true);
       setEmail("");
       setPassword("");
       router.push("/");
@@ -25,7 +26,7 @@ const SignIn = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-900">
+    <div className="min-h-screen flex items-center justify-center bg-blue-400">
       <div className="bg-gray-800 p-10 rounded-lg shadow-xl w-96">
         <h1 className="text-white text-2xl mb-5">Sign In</h1>
         <input
