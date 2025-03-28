@@ -1,9 +1,8 @@
 export default function Footer() {
   return (
-    <footer className="w-full bg-gray-800 text-white py-12">
+    <footer className="w-full bg-gray-800 text-white py-12 ">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Kolumn 1: Om oss */}
           <div>
             <h3 className="text-lg font-semibold mb-4">Om oss</h3>
             <p className="text-gray-400">
@@ -12,7 +11,6 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Kolumn 2: Snabblänkar */}
           <div>
             <h3 className="text-lg font-semibold mb-4">Snabblänkar</h3>
             <ul className="space-y-2">
@@ -43,7 +41,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Kolumn 3: Kontaktinformation */}
           <div>
             <h3 className="text-lg font-semibold mb-4">Kontakt</h3>
             <ul className="text-gray-400 space-y-2">
@@ -70,7 +67,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Copyright-sektion */}
         <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
           <p>
             &copy; {new Date().getFullYear()} Ditt Företag. Alla rättigheter
