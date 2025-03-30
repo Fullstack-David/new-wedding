@@ -6,8 +6,9 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-4">Om oss</h3>
             <p className="text-gray-400">
-              Vi är dedikerade till att leverera högkvalitativa lösningar för
-              våra kunder. Vår passion är att skapa värde och göra skillnad.
+              Vi är så tacksamma att få dela denna dag med er. Er närvaro gör
+              vårt bröllop ännu mer speciellt. Låt oss fira kärleken
+              tillsammans!
             </p>
           </div>
 
@@ -27,7 +28,7 @@ export default function Footer() {
                   href="/tjanster"
                   className="text-gray-400 hover:text-white transition duration-300"
                 >
-                  Tjänster
+                  Bilder
                 </a>
               </li>
               <li>
@@ -46,11 +47,8 @@ export default function Footer() {
             <ul className="text-gray-400 space-y-2">
               <li>
                 Email:{" "}
-                <a
-                  href="mailto:info@example.com"
-                  className="hover:text-white transition duration-300"
-                >
-                  info@example.com
+                <a href="" className="hover:text-white transition duration-300">
+                  Davidheidari2@gmail.com
                 </a>
               </li>
               <li>
@@ -59,19 +57,16 @@ export default function Footer() {
                   href="tel:+46123456789"
                   className="hover:text-white transition duration-300"
                 >
-                  +46 123 456 789
+                  076 555 69 83
                 </a>
               </li>
-              <li>Adress: 123 Gatan, Stockholm, Sverige</li>
+              <li>Adress: Kabelgatan 14, 41457 Göteborg</li>
             </ul>
           </div>
         </div>
 
         <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-          <p>
-            &copy; {new Date().getFullYear()} Ditt Företag. Alla rättigheter
-            förbehållna.
-          </p>
+          <p>&copy; {new Date().getFullYear()} Alla rättigheter förbehållna.</p>
         </div>
       </div>
     </footer>
