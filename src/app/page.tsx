@@ -13,12 +13,13 @@ export default function Home() {
   const [user] = useAuthState(auth);
   const router = useRouter();
   const userSession = sessionStorage.getItem("user");
+  console.log("sessionStorage: ", sessionStorage);
 
   console.log({ user });
 
-  // if (!user && !userSession) {
-  //   router.push("/sign-up");
-  // }
+  if (!user && !userSession) {
+    router.push("/sign-up");
+  }
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -34,7 +35,6 @@ export default function Home() {
           />
         </div>
         <div className="absolute inset-0 bg-black/30"></div>
-        {/* <div className="container mx-auto px-4 py-4">Home Page</div> */}
         <div className="flex-grow relative z-10">
           <HomeContent />
         </div>
