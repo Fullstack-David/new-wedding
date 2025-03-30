@@ -17,6 +17,7 @@ const SignIn = () => {
       const res = await signInWithEmailAndPassword(email, password);
       console.log({ res });
       sessionStorage.setItem("user", JSON.stringify(true));
+      sessionStorage.setItem("user", JSON.stringify(true));
       setEmail("");
       setPassword("");
       router.push("/");
@@ -35,6 +36,9 @@ const SignIn = () => {
         <h1 className="flex text-white text-2xl mb-5 justify-center">
           Logga In
         </h1>
+    <div className="min-h-screen flex items-center justify-center bg-white">
+      <div className="bg-blue-500 p-10 rounded-lg shadow-xl w-96">
+        <h1 className="text-white text-2xl mb-5">Sign In</h1>
         <input
           type="email"
           placeholder="E-post"
@@ -75,6 +79,12 @@ const SignIn = () => {
           >
             Register
           </button>
+        </div>
+        <div>
+          <button className="text-white">Glömt lösenord</button>
+        </div>
+        <div>
+          <button className="text-white">Spara lösenord</button>
         </div>
       </div>
     </div>
