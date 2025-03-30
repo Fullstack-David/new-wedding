@@ -16,7 +16,9 @@ const SignIn = () => {
     try {
       const res = await signInWithEmailAndPassword(email, password);
       console.log({ res });
-      //   sessionStorage.setItem("user", true);
+      // Har ändrar raden under till  JSON.stringify(email) istället "true"
+      // sessionStorage.setItem("user", JSON.stringify(email));
+      sessionStorage.setItem("user", true);
       setEmail("");
       setPassword("");
       router.push("/");

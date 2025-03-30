@@ -15,6 +15,8 @@ const SignUp = () => {
     try {
       const res = await createUserWithEmailAndPassword(email, password);
       console.log({ res });
+      // Har ändrar raden under till  JSON.stringify(email) istället "true"
+      // sessionStorage.setItem("user", JSON.stringify(email));
       sessionStorage.setItem("user", true);
       setEmail("");
       setPassword("");
