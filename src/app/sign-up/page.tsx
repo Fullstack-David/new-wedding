@@ -17,7 +17,7 @@ const SignUp = () => {
     try {
       const res = await createUserWithEmailAndPassword(email, password);
       console.log({ res });
-      sessionStorage.setItem("user", JSON.stringify(JSON.stringify(true)));
+      sessionStorage.setItem("user", "true");
       setEmail("");
       setPassword("");
     } catch (error) {
@@ -40,14 +40,14 @@ const SignUp = () => {
           placeholder="E-post"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="w-full p-3 mb-4 bg-gray-200 rounded outline-none text-white placeholder-gray-500"
+          className="w-full p-3 mb-4 bg-gray-200 rounded outline-none text-black placeholder-gray-500"
         />
         <input
           type="password"
           placeholder="Lösenord"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="w-full p-3 mb-4 bg-gray-200 rounded outline-none text-white placeholder-gray-500"
+          className="w-full p-3 mb-4 bg-gray-200 rounded outline-none text-black placeholder-gray-500"
         />
         <button
           onClick={handleSignUp}
