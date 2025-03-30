@@ -28,17 +28,19 @@ const SignIn = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-white">
       <div className="bg-blue-500 p-10 rounded-lg shadow-xl w-96">
-        <h1 className="text-white text-2xl mb-5">Sign In</h1>
+        <h1 className="flex text-white text-2xl mb-5 justify-center">
+          Logga In
+        </h1>
         <input
           type="email"
-          placeholder="Email"
+          placeholder="E-post"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           className="w-full p-3 mb-4 bg-gray-200 rounded outline-none text-white placeholder-gray-500"
         />
         <input
           type="passsword"
-          placeholder="Password"
+          placeholder="Lösenord"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           className="w-full p-3 mb-4 bg-gray-200 rounded outline-none text-white placeholder-gray-500"
@@ -47,13 +49,25 @@ const SignIn = () => {
           onClick={handleSignIn}
           className="w-full p-3 bg-indigo-600 rounded text-white hover:bg-indigo-500"
         >
-          Sign In
+          Logga In
         </button>
-        <div>
-          <button className="text-white">Glömt lösenord</button>
+        <div className="flex justify-center gap-3">
+          <p className="text-white mt-3">
+            Glömt lösenordet?
+            <a
+              className="ml-2 pb-1 border-b-2 border-transparent 
+             border-white text-white"
+              href="#"
+            >
+              Klick här
+            </a>
+          </p>
         </div>
-        <div>
-          <button className="text-white">Spara lösenord</button>
+        <hr className="border-white my-4" />
+        <div className="flex justify-center items-center">
+          <button className="bg-emerald-600 p-3 w-full text-white hover:bg-emerald-500">
+            Register
+          </button>
         </div>
       </div>
     </div>

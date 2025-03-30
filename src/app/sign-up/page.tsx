@@ -26,17 +26,19 @@ const SignUp = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-white">
       <div className="bg-blue-500 p-10 rounded-lg shadow-xl w-96">
-        <h1 className="text-white text-2xl mb-5">Sign Up</h1>
+        <h1 className="flex justify-center text-white text-2xl mb-5">
+          Register
+        </h1>
         <input
           type="email"
-          placeholder="Email"
+          placeholder="E-post"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           className="w-full p-3 mb-4 bg-gray-200 rounded outline-none text-white placeholder-gray-500"
         />
         <input
           type="password"
-          placeholder="Password"
+          placeholder="Lösenord"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           className="w-full p-3 mb-4 bg-gray-200 rounded outline-none text-white placeholder-gray-500"
@@ -45,10 +47,11 @@ const SignUp = () => {
           onClick={handleSignUp}
           className="w-full p-3 bg-indigo-600 rounded text-white hover:bg-indigo-500"
         >
-          Sign Up
+          Register
         </button>
-        <button className="w-full p-3 bg-indigo-600 rounded text-white hover:bg-indigo-500 mt-2">
-          Sign In
+        <hr className="my-5 border-white" />
+        <button className="w-full p-3 bg-emerald-600 rounded text-white hover:bg-emerald-500 mt-2">
+          Logga In
         </button>
       </div>
     </div>
