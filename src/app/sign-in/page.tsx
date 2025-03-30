@@ -25,6 +25,10 @@ const SignIn = () => {
     }
   };
 
+  const SignUp = () => {
+    router.push("/sign-up");
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-white">
       <div className="bg-blue-500 p-10 rounded-lg shadow-xl w-96">
@@ -65,7 +69,10 @@ const SignIn = () => {
         </div>
         <hr className="border-white my-4" />
         <div className="flex justify-center items-center">
-          <button className="bg-emerald-600 p-3 w-full text-white hover:bg-emerald-500">
+          <button
+            onClick={SignUp}
+            className="bg-emerald-600 p-3 w-full text-white hover:bg-emerald-500"
+          >
             Register
           </button>
         </div>

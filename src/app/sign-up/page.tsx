@@ -3,12 +3,14 @@
 import { useState } from "react";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { auth } from "@/app/firebase/config";
+import { useRouter } from "next/navigation";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [createUserWithEmailAndPassword] =
     useCreateUserWithEmailAndPassword(auth);
+  const router = useRouter();
 
   const handleSignUp = async () => {
     console.log("User Signed Up:", { email, password });
@@ -21,6 +23,10 @@ const SignUp = () => {
     } catch (error) {
       console.error("Error fetching the user", error);
     }
+  };
+
+  const SignIn = () => {
+    router.push("/sign-in");
   };
 
   return (
@@ -50,7 +56,10 @@ const SignUp = () => {
           Register
         </button>
         <hr className="my-5 border-white" />
-        <button className="w-full p-3 bg-emerald-600 rounded text-white hover:bg-emerald-500 mt-2">
+        <button
+          onClick={SignIn}
+          className="w-full p-3 bg-emerald-600 rounded text-white hover:bg-emerald-500 mt-2"
+        >
           Logga In
         </button>
       </div>
