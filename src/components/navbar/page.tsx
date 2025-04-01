@@ -19,7 +19,7 @@ export default function Navbar() {
     };
     document.addEventListener("keydown", handleEscape);
     return () => document.removeEventListener("keydown", handleEscape);
-  }, []);
+  }, [closeMenu]);
 
   // förhindra att scrolla vid öppen meny
   useEffect(() => {
