@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [signInWithEmailAndPassword, user, loading, error] =
+  const [signInWithEmailAndPassword, loading, error] =
     useSignInWithEmailAndPassword(auth);
   const router = useRouter();
 
@@ -54,22 +54,14 @@ const SignIn = () => {
             onChange={(e) => setPassword(e.target.value)}
             className="w-full p-3 mb-4 bg-gray-200 rounded outline-none text-black placeholder-gray-500"
           />
-          {/* <button
-            onClick={handleSignIn}
-            className="w-full p-3 bg-indigo-600 rounded text-white hover:bg-indigo-500"
-          >
-            Logga In
-          </button> */}
 
           <button
             type="submit"
-            disabled={loading}
             className="w-full p-3 bg-indigo-600 rounded text-white hover:bg-indigo-500 disabled:opacity-50"
           >
             {loading ? "Loggar in..." : "Logga In"}
           </button>
         </form>
-        {error && <p className="test-red-200 mt-2">{error.message}</p>}
         <div className="flex justify-center gap-3">
           <p className="text-white mt-3">
             Glömt lösenordet?

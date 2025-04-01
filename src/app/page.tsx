@@ -8,8 +8,8 @@ import Image from "next/image";
 
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/app/firebase/config";
-import { redirect, useRouter } from "next/navigation";
-import { Suspense, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const [user, loading] = useAuthState(auth);
@@ -41,7 +41,6 @@ export default function Home() {
   console.log({ user });
 
   return (
-    // <Suspense fallback={<div>Laddar...</div>}>
     <div className="flex flex-col min-h-screen">
       <Navbar />
       <main className="flex-1 relative">
@@ -61,7 +60,6 @@ export default function Home() {
       </main>
       <Footer />
     </div>
-    // </Suspense>
   );
 }
 
