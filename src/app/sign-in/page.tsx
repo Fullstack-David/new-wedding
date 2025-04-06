@@ -61,6 +61,11 @@ const SignIn = () => {
             {loading ? "Loggar in..." : "Logga In"}
           </button>
         </form>
+        <div className="flex justify-end mt-2">
+          <button className="text-white pb-1 border-b-2 border-transparent hover:border-white transition-all duration-200">
+            Spara lösenord
+          </button>
+        </div>
         <div className="flex justify-center gap-3">
           <p className="text-white mt-3">
             Glömt lösenordet?
@@ -73,6 +78,7 @@ const SignIn = () => {
             </a>
           </p>
         </div>
+
         <hr className="border-white my-4" />
         <div className="flex justify-center items-center">
           <button
@@ -81,12 +87,6 @@ const SignIn = () => {
           >
             Register
           </button>
-        </div>
-        <div>
-          <button className="text-white">Glömt lösenord</button>
-        </div>
-        <div>
-          <button className="text-white">Spara lösenord</button>
         </div>
       </div>
     </div>
