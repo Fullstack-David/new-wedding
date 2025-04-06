@@ -4,10 +4,12 @@ import { useState } from "react";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { auth } from "@/app/firebase/config";
 import { useRouter } from "next/navigation";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [signInWithEmailAndPassword, loading, error] =
     useSignInWithEmailAndPassword(auth);
   const router = useRouter();
@@ -42,18 +44,36 @@ const SignIn = () => {
         <form onSubmit={handleSignIn}>
           <input
             type="email"
-            placeholder="E-post"
+            placeholder="Ange E-post"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="w-full p-3 mb-4 bg-gray-200 rounded outline-none text-black placeholder-gray-500"
           />
-          <input
-            type="password"
-            placeholder="Lösenord"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="w-full p-3 mb-4 bg-gray-200 rounded outline-none text-black placeholder-gray-500"
-          />
+          <div className="relative">
+            <input
+              type={showPassword ? "text" : "password"}
+              placeholder="Ange lösenord"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full p-3 pr-10 mb-4 bg-gray-200 rounded outline-none text-black placeholder-gray-500"
+            />
+            <button
+              type="button"
+              aria-label={
+                showPassword ? "Password Visible" : "Password Invisible"
+              }
+              className="absolute right-3 top-1/2 -translate-y-1/2 transform pb-3"
+              onClick={() => {
+                setShowPassword(!showPassword);
+              }}
+            >
+              {showPassword ? (
+                <FaEye className="w-5 h-5 text-gray-500" />
+              ) : (
+                <FaEyeSlash className="w-5 h-5 text-gray-500" />
+              )}
+            </button>
+          </div>
           <button
             type="submit"
             className="w-full p-3 bg-indigo-600 rounded text-white hover:bg-indigo-500 disabled:opacity-50"
