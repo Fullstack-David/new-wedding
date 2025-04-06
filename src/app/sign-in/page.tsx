@@ -54,7 +54,6 @@ const SignIn = () => {
             onChange={(e) => setPassword(e.target.value)}
             className="w-full p-3 mb-4 bg-gray-200 rounded outline-none text-black placeholder-gray-500"
           />
-
           <button
             type="submit"
             className="w-full p-3 bg-indigo-600 rounded text-white hover:bg-indigo-500 disabled:opacity-50"

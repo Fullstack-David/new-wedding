@@ -84,7 +84,6 @@ export default function Navbar() {
             </button>
           </div>
           {/* Mobil läge */}
-
           <div
             ref={menuRef}
             className="md:hidden justify-between items-center gap-8 p-4"

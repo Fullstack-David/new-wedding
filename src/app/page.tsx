@@ -63,9 +63,5 @@ export default function Home() {
   );
 }
 
-// email
-// :
-// testDavid@gmail.com
-// password
-// :
-// testtest123
+// email :testDavid@gmail.com
+// password: testtest123
