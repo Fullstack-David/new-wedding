@@ -30,7 +30,8 @@ const SignUp = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-[#BFE6BA] to-[#D3959B] ">
+      <h1 className="mb-20 text-6xl">Välkomna till vår hemsida</h1>
       <div className="bg-blue-500 p-10 rounded-lg shadow-xl w-96">
         <h1 className="flex justify-center text-white text-2xl mb-5">
           Register

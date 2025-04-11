@@ -21,7 +21,7 @@ const SignIn = () => {
       const res = await signInWithEmailAndPassword(email, password);
       if (res) {
         sessionStorage.setItem("user", "true");
-        console.log({ res });
+        console.log("response", { res });
         setEmail("");
         setPassword("");
         router.push("/");
@@ -36,7 +36,10 @@ const SignIn = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-[#BFE6BA] to-[#D3959B]">
+      <h1 className="mb-20 text-6xl">
+        Välkomna till vår hemsida{email.slice(5)}
+      </h1>
       <div className="bg-blue-500 p-10 rounded-lg shadow-xl w-96">
         <h1 className="flex text-white text-2xl mb-5 justify-center">
           Logga In
