@@ -71,6 +71,10 @@ const SignIn = () => {
     router.push("/sign-up");
   };
 
+  // const ResetPassword = () => {
+  //   router.push("/reset-password");
+  // };
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-[#BFE6BA] to-[#D3959B]">
       <h1 className="mb-20 text-6xl">Välkomna till vår hemsida</h1>
