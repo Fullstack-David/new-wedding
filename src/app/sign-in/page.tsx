@@ -1,24 +1,46 @@
 "use client";
 
-import { useState } from "react";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { auth } from "@/app/firebase/config";
-import { useRouter } from "next/navigation";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { auth } from "@/app/firebase/config";
+import { FirebaseError } from "firebase/app";
+import { ToastContainer, toast } from "react-toastify";
+
+function showError(message: string) {
+  toast.error(message, {
+    position: "top-center",
+    autoClose: 5000,
+  });
+}
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [signInWithEmailAndPassword, loading, error] =
-    useSignInWithEmailAndPassword(auth);
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
   const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("User Signed in:", { email, password });
+    setIsLoading(true);
+    console.log("User Signed in:", { auth, email, password });
+
+    if (!/\S+@\S+\.\S+/.test(email)) {
+      showError("Ogiltig e-postadress");
+      setIsLoading(false);
+      return;
+    }
+
+    if (!email || !password) {
+      showError("Fyll i båda fält");
+      setIsLoading(false);
+      return;
+    }
+
     try {
-      const res = await signInWithEmailAndPassword(email, password);
+      const res = await signInWithEmailAndPassword(auth, email, password);
       if (res) {
         sessionStorage.setItem("user", "true");
         console.log("response", { res });
@@ -27,7 +49,21 @@ const SignIn = () => {
         router.push("/");
       }
     } catch (error) {
-      console.error("Error sign in", error);
+      if (error instanceof FirebaseError) {
+        switch (error.code) {
+          case "auth/user-not-found":
+          case "auth/wrong-password":
+          case "auth/invalid-credential":
+            showError("Felaktig e-post eller lösenord");
+            break;
+          default:
+            showError(`Inloffningsfel: ${error.message}`);
+        }
+      } else {
+        showError("Ett oväntat fel uppstod");
+      }
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -37,9 +73,7 @@ const SignIn = () => {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-[#BFE6BA] to-[#D3959B]">
-      <h1 className="mb-20 text-6xl">
-        Välkomna till vår hemsida{email.slice(5)}
-      </h1>
+      <h1 className="mb-20 text-6xl">Välkomna till vår hemsida</h1>
       <div className="bg-blue-500 p-10 rounded-lg shadow-xl w-96">
         <h1 className="flex text-white text-2xl mb-5 justify-center">
           Logga In
@@ -79,9 +113,10 @@ const SignIn = () => {
           </div>
           <button
             type="submit"
+            disabled={isLoading}
             className="w-full p-3 bg-indigo-600 rounded text-white hover:bg-indigo-500 disabled:opacity-50"
           >
-            {loading ? "Loggar in..." : "Logga In"}
+            {isLoading ? <Spinner /> : "Logga In"}
           </button>
         </form>
         <div className="flex justify-end mt-2">
@@ -95,7 +130,7 @@ const SignIn = () => {
             <a
               className="ml-2 pb-1 border-b-2 border-transparent 
              border-white text-white"
-              href="#"
+              href="/reset-password"
             >
               Klick här
             </a>
@@ -112,6 +147,7 @@ const SignIn = () => {
           </button>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };
