@@ -116,7 +116,7 @@ const SignIn = () => {
             disabled={isLoading}
             className="w-full p-3 bg-indigo-600 rounded text-white hover:bg-indigo-500 disabled:opacity-50"
           >
-            {isLoading ? <Spinner /> : "Logga In"}
+            {isLoading ? "Loggar in..." : "Logga In"}
           </button>
         </form>
         <div className="flex justify-end mt-2">
