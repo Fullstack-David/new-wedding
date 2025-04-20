@@ -10,7 +10,6 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/app/firebase/config";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { ToastContainer } from "react-toastify";
 
 export default function Home() {
   const [user, loading] = useAuthState(auth);
@@ -42,29 +41,26 @@ export default function Home() {
   console.log({ user });
 
   return (
-    <>
-      <ToastContainer position="bottom-right" />
-      <div className="flex flex-col min-h-screen">
-        <Navbar />
-        <main className="flex-1 relative">
-          <div className="absolute inset-0 z-0 overflow-hidden">
-            <Image
-              src="/assets/nbg.jpg"
-              fill
-              className="object-cover "
-              alt="par"
-              quality={80}
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
-          </div>
-          <div className="absolute inset-0 bg-black/30"></div>
-          <div className="flex-grow relative z-10">
-            <HomeContent />
-          </div>
-        </main>
-        <Footer />
-      </div>
-    </>
+    <div className="flex flex-col min-h-screen">
+      <Navbar />
+      <main className="flex-1 relative">
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <Image
+            src="/assets/nbg.jpg"
+            fill
+            className="object-cover "
+            alt="par"
+            quality={80}
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
+        </div>
+        <div className="absolute inset-0 bg-black/30"></div>
+        <div className="flex-grow relative z-10">
+          <HomeContent />
+        </div>
+      </main>
+      <Footer />
+    </div>
   );
 }
 

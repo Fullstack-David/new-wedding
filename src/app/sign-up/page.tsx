@@ -4,10 +4,20 @@ import { useState } from "react";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { auth } from "@/app/firebase/config";
 import { useRouter } from "next/navigation";
+import { ToastContainer, toast } from "react-toastify";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+
+function showSuccess(message: string) {
+  toast.success(message, {
+    position: "top-center",
+    autoClose: 5000,
+  });
+}
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [createUserWithEmailAndPassword] =
     useCreateUserWithEmailAndPassword(auth);
   const router = useRouter();
@@ -20,6 +30,9 @@ const SignUp = () => {
       sessionStorage.setItem("user", "true");
       setEmail("");
       setPassword("");
+      if (res) {
+        showSuccess("Kontot har skapats");
+      }
     } catch (error) {
       console.error("Error fetching the user", error);
     }
@@ -38,18 +51,36 @@ const SignUp = () => {
         </h1>
         <input
           type="email"
-          placeholder="E-post"
+          placeholder="Ange e-postadress"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           className="w-full p-3 mb-4 bg-gray-200 rounded outline-none text-black placeholder-gray-500"
         />
-        <input
-          type="password"
-          placeholder="Lösenord"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="w-full p-3 mb-4 bg-gray-200 rounded outline-none text-black placeholder-gray-500"
-        />
+        <div className="relative">
+          <input
+            type={showPassword ? "text" : "password"}
+            placeholder="Ange lösenord"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full p-3 mb-4 bg-gray-200 rounded outline-none text-black placeholder-gray-500"
+          />
+          <button
+            type="button"
+            aria-label={
+              showPassword ? "Password Visible" : "Password Invisible"
+            }
+            className="absolute right-3 top-1/2 -translate-y-1/2 transform pb-3"
+            onClick={() => {
+              setShowPassword(!showPassword);
+            }}
+          >
+            {showPassword ? (
+              <FaEye className="w-5 h-5 text-grey-500" />
+            ) : (
+              <FaEyeSlash className="w-5 h-5 text-grey-500" />
+            )}
+          </button>
+        </div>
         <button
           onClick={handleSignUp}
           className="w-full p-3 bg-indigo-600 rounded text-white hover:bg-indigo-500"
@@ -64,6 +95,7 @@ const SignUp = () => {
           Logga In
         </button>
       </div>
+      <ToastContainer />
     </div>
   );
 };
