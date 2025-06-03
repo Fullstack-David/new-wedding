@@ -1,8 +1,23 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { sendResetEmail } from "../utils/sendResetEmail";
 
 export default function ResetPassword() {
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      await sendResetEmail(email);
+      setMessage("Kolla din mail för återställningslänk.");
+    } catch (error) {
+      console.error("Något gick fel. Försök igen!");
+    }
+  };
+
   const router = useRouter();
 
   const SignIn = () => {
@@ -34,7 +49,7 @@ export default function ResetPassword() {
           </div>
         </form>
         <div>
-          <button className="bg-emerald-600 p-3 w-full text-white hover:bg-emerald-500 rounded">
+          <button className="bg-emerald-600 p-3 w-full text-white hover:bg-emerald-500 rounded cursor-pointer">
             Reset Password
           </button>
         </div>
@@ -42,7 +57,7 @@ export default function ResetPassword() {
           <a
             onClick={SignIn}
             className="ml-2 pb-1 border-b-2 border-transparent 
-             border-white text-white"
+             border-white text-white cursor-pointer"
           >
             Logga in
           </a>
