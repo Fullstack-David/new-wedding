@@ -3,6 +3,7 @@
 import Footer from "@/components/footer/page";
 import Navbar from "@/components/navbar/page";
 import HomeContent from "@/components/content/page";
+import Picture from "./pictures/page";
 import LoadingSpinner from "@/components/loadingSpinner/page";
 import Image from "next/image";
 
@@ -57,6 +58,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-black/30"></div>
         <div className="flex-grow relative z-10">
           <HomeContent />
+          <Picture />
         </div>
       </main>
       <Footer />
